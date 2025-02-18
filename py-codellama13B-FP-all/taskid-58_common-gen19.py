@@ -1,0 +1,21 @@
+from typing import List
+
+def common(l1: List[int], l2: List[int]) -> List[int]:
+    """Return sorted unique common elements for two lists.
+    >>> common([1, 4, 3, 34, 653, 2, 5], [5, 7, 1, 5, 9, 653, 121])
+    [1, 5, 653]
+    >>> common([5, 3, 2, 8], [3, 2])
+    [2, 3]
+
+    """
+
+
+    common_elements: List[int] = []
+
+    for i in range(len(l1)):
+        for j in range(len(l2)):
+            if l1[i] == l2[j]:
+                if l1[i] not in common_elements:
+                    common_elements.append(l1[i])
+
+    return sorted(common_elements)

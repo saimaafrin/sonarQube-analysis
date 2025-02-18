@@ -1,0 +1,34 @@
+def encrypt(s: str) -> str:
+    """Create a function encrypt that takes a string as an argument and
+    returns a string encrypted with the alphabet being rotated. 
+    The alphabet should be rotated in a manner such that the letters 
+    shift down by two multiplied to two places.
+    For example:
+    >>> encrypt('hi')
+    'lm'
+    >>> encrypt('asdfghjkl')
+    'ewhjklnop'
+    >>> encrypt('gf')
+    'kj'
+    >>> encrypt('et')
+    'ix'
+    """
+
+
+    # your code here
+    encrypted = []
+
+    for c in s:
+        # shift right by 2
+        # and wrap back around to start of alphabet
+        # if the char is lowercase
+        if c.islower():
+            encrypted.append(chr((ord(c) - ord('a') + 2) % 26 + ord('a')))
+        # if the char is uppercase
+        elif c.isupper():
+            encrypted.append(chr((ord(c) - ord('A') + 2) % 26 + ord('A')))
+        # if the char is a non-letter
+        else:
+            encrypted.append(c)
+
+    return ''.join(encrypted)
