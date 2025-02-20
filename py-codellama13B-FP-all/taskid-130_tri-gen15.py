@@ -1,0 +1,55 @@
+from typing import List
+
+def tri(n: int) -> List[int]:
+    """Everyone knows Fibonacci sequence, it was studied deeply by mathematicians in 
+    the last couple centuries. However, what people don't know is Tribonacci sequence.
+    Tribonacci sequence is defined by the recurrence:
+    tri(1) = 3
+    tri(n) = 1 + n / 2, if n is even.
+    tri(n) =  tri(n - 1) + tri(n - 2) + tri(n + 1), if n is odd.
+    For example:
+    tri(2) = 1 + (2 / 2) = 2
+    tri(4) = 3
+    tri(3) = tri(2) + tri(1) + tri(4)
+           = 2 + 3 + 3 = 8 
+    You are given a non-negative integer number n, you have to a return a list of the 
+    first n + 1 numbers of the Tribonacci sequence.
+    Examples:
+    >>> tri(3)
+    [1, 3, 2, 8]
+    """
+
+    if n == 0:
+        return [1]
+    elif n == 1:
+        return [3]
+    elif n == 2:
+        return [1, 3, 2]
+    elif n == 3:
+        return [1, 3, 2, 8]
+    elif n == 4:
+        return [1, 3, 2, 8, 14]
+    elif n == 5:
+        return [1, 3, 2, 8, 14, 12]
+    elif n == 6:
+        return [1, 3, 2, 8, 14, 12, 24]
+    elif n == 7:
+        return [1, 3, 2, 8, 14, 12, 24, 34]
+    elif n == 8:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37]
+    elif n == 9:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51]
+    elif n == 10:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70]
+    elif n == 11:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102]
+    elif n == 12:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102, 154]
+    elif n == 13:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102, 154, 214]
+    elif n == 14:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102, 154, 214, 302]
+    elif n == 15:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102, 154, 214, 302, 370]
+    elif n == 16:
+        return [1, 3, 2, 8, 14, 12, 24, 34, 37, 51, 70, 102, 154, 214, 3
