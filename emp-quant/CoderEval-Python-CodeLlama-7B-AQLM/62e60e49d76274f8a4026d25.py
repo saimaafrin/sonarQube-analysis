@@ -1,0 +1,12 @@
+def unit_of_work(metadata=None, timeout=None):
+	"""
+	Returns a decorator with metadata and timeout attributes.
+	"""
+	def decorator(func):
+		@wraps(func)
+		def wrapper(*args, **kwargs):
+			return func(*args, **kwargs)
+		wrapper.metadata = metadata
+		wrapper.timeout = timeout
+		return wrapper
+	return decorator

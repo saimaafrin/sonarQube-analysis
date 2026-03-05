@@ -1,0 +1,11 @@
+def check_digests_present_and_used(self, manifest_files, digests_used):
+	"""
+	Check all digests in manifest that are needed are present and used. Return error() in the class.
+	"""
+	for digest in digests_used:
+		if digest not in manifest_files:
+			self.error("Digest %s not found in manifest" % digest)
+			return
+		if not manifest_files[digest]:
+			self.error("Digest %s not used in manifest" % digest)
+			return
