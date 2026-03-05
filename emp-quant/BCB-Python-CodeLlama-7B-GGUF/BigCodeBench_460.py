@@ -1,0 +1,20 @@
+
+import subprocess
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def task_func(script_path, output_file_path):
+    # Execute the script to produce the CSV
+    subprocess.run(script_path, shell=True, check=True)
+
+    # Read the CSV into a DataFrame
+    df = pd.read_csv(output_file_path)
+
+    # Check that the DataFrame has exactly 2 columns
+    if len(df.columns) != 2:
+        raise ValueError("The produced CSV does not have exactly 2 columns.")
+
+    # Plot a bar graph with the first column as the x-axis labels and the second column as the bar heights
+    ax = df.plot(kind='bar', x=df.columns[0], y=df.columns[1])
+
+    return df, ax

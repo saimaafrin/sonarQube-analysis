@@ -1,0 +1,11 @@
+
+import os
+import shutil
+
+def task_func(src_dir, dest_dir, extension):
+    files_moved = 0
+    for file in os.listdir(src_dir):
+        if file.endswith(extension):
+            shutil.move(os.path.join(src_dir, file), dest_dir)
+            files_moved += 1
+    return files_moved

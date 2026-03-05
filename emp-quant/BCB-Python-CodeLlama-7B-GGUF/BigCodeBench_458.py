@@ -1,0 +1,24 @@
+
+import json
+import re
+import pandas as pd
+
+def task_func(json_str):
+    # Load JSON string into a dictionary
+    data = json.loads(json_str)
+
+    # Normalize dictionary by doubling numerical values
+    for key, value in data.items():
+        if isinstance(value, (int, float)):
+            data[key] = value * 2
+        elif isinstance(value, list):
+            data[key] = [item * 2 for item in value]
+        elif isinstance(value, str):
+            match = re.search(r'\d+', value)
+            if match:
+                data[key] = float(match.group()) * 2
+
+    # Create Pandas DataFrame from dictionary
+    df = pd.DataFrame(data)
+
+    return df

@@ -1,0 +1,52 @@
+
+import cv2
+import matplotlib.pyplot as plt
+
+def task_func(image_path, kernel_size):
+    """
+    Applies a blur effect to an image using a specified kernel size,
+    then visualizes both the original and blurred images side by side.
+
+    Parameters:
+    image_path (str): Path to the image file.
+    kernel_size (int): Size of the kernel for the blur effect.
+
+    Returns:
+    tuple: A tuple containing a numpy.ndarray of the blurred image,
+        and two matplotlib.axes.Axes objects for the plots of the original
+        and blurred images.
+
+    Raises:
+    FileNotFoundError: If the specified image file does not exist.
+    ValueError: If kernel_size is not a positive integer.
+    """
+    # Check if the image file exists
+    if not os.path.isfile(image_path):
+        raise FileNotFoundError(f"Image file not found: {image_path}")
+
+    # Check if kernel_size is a positive integer
+    if not isinstance(kernel_size, int) or kernel_size <= 0:
+        raise ValueError(f"Invalid kernel size: {kernel_size}")
+
+    # Load the image
+    image = cv2.imread(image_path)
+
+    # Apply the blur effect
+    blurred_image = cv2.GaussianBlur(image, (kernel_size, kernel_size), 0)
+
+    # Create a figure with two subplots
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
+
+    # Plot the original and blurred images
+    ax1.imshow(image)
+    ax2.imshow(blurred_image)
+
+    # Set the titles of the subplots
+    ax1.set_title("Original Image")
+    ax2.set_title("Blurred Image")
+
+    # Return the blurred image and the subplots
+    return blurred_image, (ax1, ax2)
+
+# Show the plots
+plt.show()

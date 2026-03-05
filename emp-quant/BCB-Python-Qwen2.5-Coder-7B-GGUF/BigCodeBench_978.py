@@ -1,0 +1,20 @@
+
+import numpy as np
+import pandas as pd
+from sklearn.decomposition import PCA
+
+def task_func(array, seed=None):
+    if array.ndim != 2:
+        raise ValueError("Input array must be 2D")
+    
+    if array.shape[1] < 2:
+        return pd.DataFrame()
+    
+    np.random.seed(seed)
+    shuffled_array = array[:, np.random.permutation(array.shape[1])]
+    
+    pca = PCA(n_components=2)
+    principal_components = pca.fit_transform(shuffled_array)
+    
+    df = pd.DataFrame(data=principal_components, columns=['PC1', 'PC2'])
+    return df

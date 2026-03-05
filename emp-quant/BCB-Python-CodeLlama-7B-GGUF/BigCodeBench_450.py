@@ -1,0 +1,23 @@
+
+from scipy.spatial.distance import cdist
+from sklearn.datasets import make_blobs
+import matplotlib.pyplot as plt
+
+def task_func(n_samples=200, centers=4, plot_path=None, random_seed=None):
+    # Generate a synthetic 2D dataset using make_blobs
+    X, _ = make_blobs(n_samples=n_samples, centers=centers, random_state=random_seed)
+
+    # Calculate the Euclidean distance between individual samples
+    distances = cdist(X, X, metric='euclidean')
+
+    # Visualize the dataset
+    if plot_path is None:
+        fig, ax = plt.subplots()
+        ax.scatter(X[:, 0], X[:, 1], c=range(n_samples))
+        ax.set_xlabel('Feature 1')
+        ax.set_ylabel('Feature 2')
+        ax.set_title('Synthetic 2D Dataset')
+        return fig, ax
+    else:
+        plt.savefig(plot_path)
+        return None

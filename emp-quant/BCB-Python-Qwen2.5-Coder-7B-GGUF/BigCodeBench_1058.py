@@ -1,0 +1,62 @@
+
+import itertools
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Constants
+SHAPES = [
+    "Circle",
+    "Square",
+    "Triangle",
+    "Rectangle",
+    "Pentagon",
+    "Hexagon",
+    "Heptagon",
+    "Octagon",
+    "Nonagon",
+    "Decagon",
+]
+COLORS = [
+    "Red",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Black",
+    "White",
+    "Purple",
+    "Orange",
+    "Pink",
+    "Brown",
+]
+
+def task_func(num_pairs=10):
+    """
+    Generates and displays a countplot of predefined shape-color pairs.
+
+    Parameters:
+    num_pairs (int): The number of unique shape-color combinations to display.
+
+    Returns:
+    ax (matplotlib.axes._axes.Axes): The Axes object of the countplot.
+    """
+    # Generate unique shape-color pairs
+    shape_color_pairs = list(itertools.product(SHAPES, COLORS))[:num_pairs]
+    
+    # Create a DataFrame from the pairs
+    df = pd.DataFrame(shape_color_pairs, columns=['Shape', 'Color'])
+    
+    # Create a countplot
+    ax = sns.countplot(x='Shape', data=df)
+    
+    # Set title and labels
+    ax.set_title(f'Count of Shape-Color Pairs (Top {num_pairs})')
+    ax.set_xlabel('Shape')
+    ax.set_ylabel('Count')
+    
+    # Rotate x-axis labels for better readability
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+    
+    # Display the plot
+    plt.show()
+    
+    return ax

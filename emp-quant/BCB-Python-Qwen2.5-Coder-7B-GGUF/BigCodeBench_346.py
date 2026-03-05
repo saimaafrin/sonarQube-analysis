@@ -1,0 +1,34 @@
+
+import subprocess
+import os
+import sys
+import time
+
+def task_func(script_path, wait=True, *args):
+    """
+    Run a Python script as a process with predefined arguments.
+    
+    :param script_path: Path to the Python script to run.
+    :param wait: If True, waits for the process to complete. If False, returns None.
+    :param args: Additional arguments to pass to the script.
+    :return: int: The return code of the subprocess. If 'wait' is False, returns None.
+    """
+    # Check if the script exists
+    if not os.path.exists(script_path):
+        raise ValueError(f"The script {script_path} does not exist.")
+    
+    # Construct the command to run the script
+    command = [sys.executable, script_path] + list(args)
+    
+    try:
+        if wait:
+            # Run the script and wait for it to complete
+            result = subprocess.run(command, check=True, capture_output=True, text=True)
+            return result.returncode
+        else:
+            # Run the script in the background
+            process = subprocess.Popen(command)
+            return None
+    except subprocess.CalledProcessError as e:
+        # Raise an exception if the script raises an exception
+        raise subprocess.CalledProcessError(e.returncode, e.cmd, e.output, e.stderr)

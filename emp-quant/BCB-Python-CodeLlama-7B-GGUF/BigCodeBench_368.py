@@ -1,0 +1,31 @@
+
+import os
+import shutil
+import random
+
+def task_func(src_dir: str, dest_dir: str, seed: int = 100) -> str:
+    """
+    Moves a random file from the source directory to the specified destination directory.
+
+    Args:
+        src_dir (str): The source directory path.
+        dest_dir (str): The destination directory path.
+        seed (int, optional): The random seed. Defaults to 100.
+
+    Returns:
+        str: The name of the file moved. Format: 'filename.extension' (e.g., 'file1.txt').
+    """
+    # Get a list of all files in the source directory
+    file_list = os.listdir(src_dir)
+
+    # Set the random seed
+    random.seed(seed)
+
+    # Choose a random file from the list
+    file_name = random.choice(file_list)
+
+    # Move the file to the destination directory
+    shutil.move(os.path.join(src_dir, file_name), dest_dir)
+
+    # Return the name of the file moved
+    return file_name
