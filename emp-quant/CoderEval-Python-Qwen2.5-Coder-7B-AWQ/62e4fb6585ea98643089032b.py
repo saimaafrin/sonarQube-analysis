@@ -1,0 +1,1 @@
+return tuple(map(int, s.split('.')))

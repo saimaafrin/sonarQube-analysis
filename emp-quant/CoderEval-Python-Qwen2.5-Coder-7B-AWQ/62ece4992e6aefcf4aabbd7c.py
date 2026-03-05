@@ -1,0 +1,1 @@
+return ' '.join(script.split('\n')).replace('\t', '').replace('  ', ' ').strip()

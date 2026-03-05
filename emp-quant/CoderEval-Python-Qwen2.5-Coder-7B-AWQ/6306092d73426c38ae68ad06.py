@@ -1,0 +1,1 @@
+return [arg for arg in args if not self.is_arg_visible(arg)]

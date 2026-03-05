@@ -1,0 +1,1 @@
+return hash(key) % len(self.data)

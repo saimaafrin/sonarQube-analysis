@@ -1,0 +1,1 @@
+return self.__dict__.get(key, default)
