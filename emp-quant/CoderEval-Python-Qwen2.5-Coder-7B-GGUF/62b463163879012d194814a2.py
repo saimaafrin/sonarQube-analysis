@@ -1,0 +1,1 @@
+self._assets[basename] = file_path
