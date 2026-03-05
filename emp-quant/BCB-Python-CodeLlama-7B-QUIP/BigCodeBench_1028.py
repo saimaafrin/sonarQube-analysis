@@ -1,0 +1,19 @@
+
+import subprocess
+import time
+import json
+import platform
+LOGFILE_PATH = "logfile.log"
+def task_func(interval, duration):
+    if interval <= 0 or duration <= 0:
+        raise ValueError("Invalid input parameters")
+    if platform.system() == "Windows":
+        command = "powershell.exe"
+    else:
+        command = "top"
+    with open(LOGFILE_PATH, "w") as f:
+        f.write("[")
+    while duration > 0:
+        start_time = time.time()
+        if platform.system() == "Windows":
+            subprocess.run([command, "|", "Get-CsUsage", "|", "Out-File", "-FilePath", LOGFILE_PATH, "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String", "|", "Select-Object", "-ExpandProperty", "CPUUsage", "|", "Out-String

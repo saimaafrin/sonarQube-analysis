@@ -1,0 +1,23 @@
+
+import matplotlib
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+
+def task_func(df):
+    # Standardize 'Age' and 'Score' columns
+    scaler = StandardScaler()
+    df['Age'] = scaler.fit_transform(df[['Age']])
+    df['Score'] = scaler.fit_transform(df[['Score']])
+    
+    # Remove duplicate entries based on 'Name'
+    df = df.drop_duplicates(subset='Name')
+    
+    # Plot a scatter plot of these standardized values
+    fig, ax = plt.subplots()
+    ax.scatter(df['Age'], df['Score'])
+    ax.set_title('Scatter Plot of Standardized Age and Score')
+    ax.set_xlabel('Age (standardized)')
+    ax.set_ylabel('Score (standardized)')
+    
+    return df, ax

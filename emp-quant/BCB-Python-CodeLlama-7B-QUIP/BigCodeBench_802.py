@@ -1,0 +1,9 @@
+
+import numpy as np
+import itertools
+
+def task_func(dimension, seed=42):
+    np.random.seed(seed)
+    matrix = np.random.randint(1, 100, size=(dimension, dimension))
+    flat_list = list(itertools.chain.from_iterable(matrix))
+    return (matrix, flat_list)

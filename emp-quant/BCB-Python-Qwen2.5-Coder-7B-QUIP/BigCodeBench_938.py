@@ -1,0 +1,18 @@
+
+import re
+import pandas as pd
+
+def task_func(input_df):
+    # Define a function to clean the text
+    def clean_text(text):
+        # Use regex to remove all special characters, punctuation, and spaces
+        return re.sub(r'[^a-zA-Z0-9]', '', text)
+    
+    # Apply the clean_text function to the 'text' column
+    input_df['clean_text'] = input_df['text'].apply(clean_text)
+    
+    # Calculate the length of the cleaned text
+    input_df['text_length'] = input_df['clean_text'].apply(len)
+    
+    # Return the DataFrame with the new columns
+    return input_df

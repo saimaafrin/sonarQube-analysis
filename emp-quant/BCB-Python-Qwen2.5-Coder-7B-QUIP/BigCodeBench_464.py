@@ -1,0 +1,15 @@
+
+import json
+from datetime import datetime
+from decimal import Decimal
+
+def task_func(my_obj):
+    class CustomEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, datetime):
+                return obj.strftime('%Y-%m-%d %H:%M:%S')
+            elif isinstance(obj, Decimal):
+                return str(obj)
+            return super().default(obj)
+
+    return json.dumps(my_obj, cls=CustomEncoder)
