@@ -1,0 +1,38 @@
+import pandas as pd
+import re
+STOPWORDS = set([
+    "i", "me", "my", "myself", "we", "our", "ours", "ourselves", "you", "your", "yours", "yourself",
+    "yourselves", "he", "him", "his", "himself", "she", "her", "hers", "herself", "it", "its", "itself",
+    "they", "them", "their", "theirs", "themselves", "what", "which", "who", "whom", "this", "that",
+    "these", "those", "am", "is", "are", "was", "were", "be", "been", "being", "have", "has", "had",
+    "having", "do", "does", "did", "doing", "a", "an", "the", "and", "but", "if", "or", "because",
+    "as", "until", "while", "of", "at", "by", "for", "with", "about", "against", "between", "into",
+    "through", "during", "before", "after", "above", "below", "to", "from", "up", "down", "in", "out",
+    "on", "off", "over", "under", "again", "further", "then", "once", "here", "there", "when", "where",
+    "why", "how", "all", "any", "both", "each", "few", "more", "most", "other", "some", "such", "no",
+    "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", "t", "can", "will", "just",
+    "don", "should", "now"
+])
+def task_func(data, column):
+    """
+    Removes English stopwords from a text column in a DataFrame and returns the modified DataFrame.
+
+    Parameters:
+    data (pandas.DataFrame): The input DataFrame containing the text column.
+    column (str): The name of the column from which stopwords will be removed.
+
+    Returns:
+    pandas.DataFrame: A DataFrame with the stopwords removed from the specified column.
+    """
+    # Define a function to remove stopwords from a single text
+    def remove_stopwords(text):
+        # Split the text into words
+        words = re.findall(r'\b\w+\b', text.lower())
+        # Filter out stopwords
+        filtered_words = [word for word in words if word not in STOPWORDS]
+        # Join the filtered words back into a single string
+        return ' '.join(filtered_words)
+
+    # Apply the function to the specified column
+    data[column] = data[column].apply(remove_stopwords)
+    return data

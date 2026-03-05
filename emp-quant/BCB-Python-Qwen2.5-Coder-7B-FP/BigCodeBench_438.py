@@ -1,0 +1,27 @@
+import pickle
+import os
+import matplotlib.pyplot as plt
+def task_func(numbers, file_path="save.pkl"):
+    # Check if the input is a list of numbers
+    if not all(isinstance(num, (int, float)) for num in numbers):
+        raise TypeError("Input must be a list of numbers")
+    
+    # Create a figure and axis
+    fig, ax = plt.subplots()
+    ax.plot(numbers)
+    
+    # Save the figure to a pickle file
+    with open(file_path, 'wb') as f:
+        pickle.dump(fig, f)
+    
+    # Close the figure to free up memory
+    plt.close(fig)
+    
+    # Load the figure from the pickle file
+    with open(file_path, 'rb') as f:
+        loaded_fig = pickle.load(f)
+    
+    # Delete the pickle file
+    os.remove(file_path)
+    
+    return loaded_fig

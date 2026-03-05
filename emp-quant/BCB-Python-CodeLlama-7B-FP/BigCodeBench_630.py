@@ -1,0 +1,18 @@
+import pandas as pd
+import os
+OUTPUT_DIR = './output'
+def task_func(df, filename, output_dir=OUTPUT_DIR):
+    """
+    Save a Pandas DataFrame to a JSON file in a specified directory.
+    """
+    # Create the output directory if it does not exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    # Save the DataFrame to a JSON file
+    df.to_json(os.path.join(output_dir, filename), orient='records')
+    # Return the full file path where the DataFrame is saved
+    return os.path.join(output_dir, filename)
+df = pd.DataFrame({'Name': ['Alice', 'Bob', 'Charlie'],
+                   'Age': [25, 30, 35]})
+filename = 'data.json'
+output_dir = './output'

@@ -1,0 +1,16 @@
+import subprocess
+from ipaddress import IPv4Network
+def task_func(ip_range):
+    active_ips = {}
+    network = IPv4Network(ip_range, strict=False)
+    
+    for ip in network.hosts():
+        try:
+            # Ping the IP address and check the return code
+            response = subprocess.run(['ping', '-c', '1', str(ip)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+            active_ips[str(ip)] = True
+        except subprocess.CalledProcessError:
+            # If ping fails, mark the IP as inactive
+            active_ips[str(ip)] = False
+    
+    return active_ips

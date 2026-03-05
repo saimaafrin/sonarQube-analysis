@@ -1,0 +1,38 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+def task_func(data=None):
+    """
+    Converts string-formatted weights to floats and plots a scatter plot of weight against height.
+    This function takes a dictionary with two keys: 'Weight_String' and 'Height'.
+    The 'Weight_String' key should contain a list of weight values in string format, while the 'Height' key should have a list of corresponding height values in numerical format.
+    If the input dictionary is not provided, the function uses a default dataset.
+    The function then converts the string-formatted weights into float, and plots a scatter plot to visualize the relationship between weight and height.
+    The function should raise the exception for: ValueError: If any of the values in the 'Weight_String' key are not formatted as strings.
+    This validation ensures that the weight data is in the expected format for conversion to float.
+    The function should output with:
+        ax (matplotlib.axes._axes.Axes): A scatter plot with weight on the x-axis and height on the y-axis, titled "Weight vs Height".
+    """
+    # Set default data if not provided
+    if data is None:
+        data = {
+            'Weight_String': ['70.0', '68.0', '72.0', '65.0', '75.0', '67.0', '73.0', '69.0', '71.0', '68.0'],
+            'Height': [170, 168, 172, 165, 175, 167, 173, 169, 171, 168]
+        }
+
+    # Convert string-formatted weights to floats
+    data['Weight'] = [float(weight) for weight in data['Weight_String']]
+
+    # Plot scatter plot
+    ax = sns.scatterplot(x='Weight', y='Height', data=data)
+    ax.set_title('Weight vs Height')
+
+    # Validate input data
+    if not all(isinstance(weight, str) for weight in data['Weight_String']):
+        raise ValueError('All values in the "Weight_String" key must be formatted as strings.')
+
+    return ax
+data = {
+    'Weight_String': ['70.0', '68.0', '72.0', '65.0', '75.0', '67.0', '73.0', '69.0', '71.0', '68.0'],
+    'Height': [170, 168, 172, 165, 175, 167, 173, 169, 171, 168]
+}
