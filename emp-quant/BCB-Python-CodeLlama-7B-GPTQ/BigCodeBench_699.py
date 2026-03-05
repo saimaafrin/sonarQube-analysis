@@ -1,0 +1,19 @@
+import pandas as pd
+from sklearn.cluster import KMeans
+def task_func(x_list, y_list, n_clusters=2, random_state=0):
+    """
+    Perform K-Means clustering on the given data by first turning it into a DataFrame with two columns "x" and "y" and then return the labels and centroids.
+    """
+    # Create a DataFrame with two columns "x" and "y"
+    df = pd.DataFrame({"x": x_list, "y": y_list})
+
+    # Perform K-Means clustering
+    kmeans = KMeans(n_clusters=n_clusters, random_state=random_state)
+    kmeans.fit(df)
+
+    # Return the labels and centroids
+    return (kmeans.labels_, kmeans.cluster_centers_)
+x_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+y_list = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+n_clusters = 3
+random_state = 0

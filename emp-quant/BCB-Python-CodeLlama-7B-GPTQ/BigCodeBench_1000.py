@@ -1,0 +1,21 @@
+import urllib.request
+import os
+import json
+import pandas as pd
+TARGET_JSON_FILE = "downloaded_file.json"
+def task_func(url):
+    # Retrieve JSON file from the given URL
+    urllib.request.urlretrieve(url, TARGET_JSON_FILE)
+
+    # Open and read the JSON file
+    with open(TARGET_JSON_FILE, "r") as f:
+        data = json.load(f)
+
+    # Convert JSON data to a pandas DataFrame
+    df = pd.DataFrame(data)
+
+    # Delete the temporary JSON file
+    os.remove(TARGET_JSON_FILE)
+
+    return df
+url = "https://example.com/data.json"

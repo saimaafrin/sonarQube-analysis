@@ -1,0 +1,14 @@
+import math
+import yaml
+def task_func(yaml_path, key):
+    with open(yaml_path, 'r') as f:
+        data = yaml.load(f, Loader=yaml.FullLoader)
+
+    data[key] = math.cos(data[key])
+
+    with open(yaml_path, 'w') as f:
+        yaml.dump(data, f)
+
+    return data
+yaml_path = 'example.yaml'
+key = 'value'

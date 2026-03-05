@@ -1,0 +1,37 @@
+import numpy as np
+import matplotlib.pyplot as plt
+def task_func(data: np.ndarray) -> plt.Axes:
+    """
+    Plots the cumulative probability distribution of a given NumPy array of numbers, representing how the cumulative probability increases with the sorted data indexes.
+    Note that:
+    - In case of an all-zeros input, the cumulative probability remains at 0 across all indexes.
+    - The plot uses marker ('o') and a solid line ('-') for the cumulative probability curve.
+    - The plot is titled "Cumulative Probability Plot", with "Index" on the x-axis and "Cumulative Probability" on the y-axis.
+    - The function should raise the exception for:
+        - ValueError: If the input array contains negative numbers or NaNs.
+        - TypeError: If the input array contains non-numeric inputs.
+    - The function should output with:
+        - matplotlib.pyplot.Axes: The plot of cumulative probabilities.
+    """
+    # Check for negative numbers or NaNs in the input array
+    if any(x < 0 for x in data) or any(np.isnan(x) for x in data):
+        raise ValueError("Input array contains negative numbers or NaNs.")
+
+    # Check for non-numeric inputs in the input array
+    if not all(isinstance(x, (int, float)) for x in data):
+        raise TypeError("Input array contains non-numeric inputs.")
+
+    # Sort the input array
+    data = np.sort(data)
+
+    # Calculate the cumulative probability
+    cumulative_probability = np.cumsum(data) / np.sum(data)
+
+    # Plot the cumulative probability
+    fig, ax = plt.subplots()
+    ax.plot(data, cumulative_probability, 'o-')
+    ax.set_xlabel("Index")
+    ax.set_ylabel("Cumulative Probability")
+    ax.set_title("Cumulative Probability Plot")
+    return ax
+data = np.array([1, 2, 3, 4, 5])

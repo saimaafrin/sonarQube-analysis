@@ -1,0 +1,30 @@
+import pandas as pd
+import random
+from scipy import stats
+def task_func(n_data_points=5000, min_value=0.0, max_value=10.0):
+    """
+    Generate a random dataset of floating-point numbers within a specified range,
+    truncate each value to 3 decimal places, and calculate statistical measures
+    (mean, median, mode) of the data.
+
+    Args:
+        n_data_points (int): Number of data points to generate.
+        min_value (float): Minimum value of the range.
+        max_value (float): Maximum value of the range.
+
+    Returns:
+        dict: A dictionary with keys 'mean', 'median', 'mode' and their corresponding calculated values.
+    """
+    # Generate random data within the specified range
+    data = [random.uniform(min_value, max_value) for _ in range(n_data_points)]
+
+    # Truncate each value to 3 decimal places
+    data = [round(x, 3) for x in data]
+
+    # Calculate statistical measures
+    mean = stats.mean(data)
+    median = stats.median(data)
+    mode = stats.mode(data)
+
+    # Return the calculated values in a dictionary
+    return {'mean': mean, 'median': median, 'mode': mode}
