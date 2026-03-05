@@ -1,0 +1,1 @@
+return '\n'.join(f"{prefix}{msg}" for msg in sorted(self.messages))

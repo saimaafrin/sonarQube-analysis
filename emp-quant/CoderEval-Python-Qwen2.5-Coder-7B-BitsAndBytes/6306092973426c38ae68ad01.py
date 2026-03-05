@@ -1,0 +1,1 @@
+return {option: deprecated_by for option, deprecated_by in self.spec_helper.iterate_option_specs() if deprecated_by}

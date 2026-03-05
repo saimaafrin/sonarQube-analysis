@@ -1,0 +1,53 @@
+def get_silent_args(self, args):
+	"""
+	list of silenced argument
+
+:param args: The received arguments.
+:return: list, slienced argument names
+	"""
+	return [
+		"--silent",
+		"--silent-all",
+		"--quiet",
+		"--quiet-all",
+		"--silent-ssh",
+		"--silent-pushd",
+		"--silent-popd",
+		"--silent-errors",
+		"--silent-status",
+		"--silent-usage",
+		"--silent-commands",
+		"--silent-functions",
+		"--silent-plugins",
+		"--silent-all-commands",
+		"--silent-all-functions",
+		"--silent-all-plugins",
+		"--silent-all-errors",
+		"--silent-all-status",
+		"--silent-all-usage",
+		"--silent-all-commands",
+		"--silent-all-functions",
+		"--silent-all-plugins",
+		"--silent-all-errors",
+		"--silent-all-status",
+		"--silent-all-usage",
+		"--silent-all-commands",
+		"--silent-all-functions",
+		"--silent-all-plugins",
+		"--silent-all-errors",
+		"--silent-all-status",
+		"--silent-all-usage",
+		"--silent-all-commands",
+		"--silent-all-functions",
+		"--silent-all-plugins",
+		"--silent-all-errors",
+		"--silent-all-status",
+		"--silent-all-usage",
+		"--silent-all-commands",
+		"--silent-all-functions",
+		"--silent-all-plugins",
+		"--silent-all-errors",
+		"--silent-all-status",
+		"--silent-all-usage",
+		"--silent-all-commands",
+		"--silent-all-

@@ -1,0 +1,1 @@
+return self.data.get(key, default)
