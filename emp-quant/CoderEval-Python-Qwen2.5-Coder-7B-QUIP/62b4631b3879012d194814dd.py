@@ -1,0 +1,1 @@
+content = content.replace("w:st=", "w-st=")

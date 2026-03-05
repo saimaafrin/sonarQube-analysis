@@ -1,0 +1,21 @@
+def _normalizeargs(sequence, output=None):
+	"""
+	Normalize declaration arguments
+
+Normalization arguments might contain Declarions, tuples, or single
+interfaces.
+
+Anything but individial interfaces or implements specs will be expanded.
+	"""
+	if output is None:
+		output = []
+	if isinstance(sequence, (list, tuple)):
+		for item in sequence:
+			if isinstance(item, (list, tuple)):
+				_normalizeargs(item, output)
+			else:
+				output.append(item)
+		return output
+	else:
+		output.append(sequence)
+	return output

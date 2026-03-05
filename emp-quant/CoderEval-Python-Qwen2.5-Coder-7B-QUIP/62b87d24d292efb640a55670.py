@@ -1,0 +1,11 @@
+import pkg_resources
+
+def get_versions():
+    """
+    Obtains the version information. If the version information cannot be obtained, the default value is returned.
+    """
+    try:
+        version = pkg_resources.get_distribution("your_package_name").version
+    except pkg_resources.DistributionNotFound:
+        version = "default_version"
+    return version

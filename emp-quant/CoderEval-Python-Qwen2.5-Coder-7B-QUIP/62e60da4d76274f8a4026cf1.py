@@ -1,0 +1,1 @@
+return [key for key in keys if key in self.index]

@@ -1,0 +1,8 @@
+def namesAndDescriptions(self, all=False):
+	"""
+	Returns the name and description of the current class attribute.
+	"""
+	if all:
+		return self.name, self.description
+	else:
+		return self.name
