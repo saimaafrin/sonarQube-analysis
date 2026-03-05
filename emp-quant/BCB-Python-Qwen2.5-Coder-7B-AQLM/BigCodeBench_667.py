@@ -1,0 +1,15 @@
+
+import heapq
+import collections
+
+def task_func(x, n):
+    # Create a counter object to count the frequency of each letter
+    letter_counter = collections.Counter(x)
+    
+    # Use heapq to find the n most common letters
+    most_common_letters = heapq.nmost_common(letter_counter, n)
+    
+    # Extract the letters from the most common tuples
+    result = [letter for letter, frequency in most_common_letters]
+    
+    return result

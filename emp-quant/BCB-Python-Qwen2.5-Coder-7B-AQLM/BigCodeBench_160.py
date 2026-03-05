@@ -1,0 +1,39 @@
+
+import pandas as pd
+import seaborn as sns
+from scipy import stats
+
+# Constants
+COLUMN_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+
+def task_func(data):
+    """
+    Processes a given dataset to compute the average of each row, plots the distribution of these averages,
+    and evaluates their normality. The function returns these averages as an additional column in a DataFrame,
+    the plot of the distribution, and the p-value from the normality test if applicable.
+    
+    Parameters:
+    data (pd.DataFrame): A pandas DataFrame with exactly eight columns.
+    
+    Returns:
+    tuple: Contains three elements:
+        DataFrame: A pandas DataFrame with the original data and an added 'Average' column.
+        Axes object: The Axes object from the seaborn distribution plot of the averages.
+        float or None: The p-value from the normality test on the averages, or None if the test could not be conducted.
+    """
+    if data.shape[1] != 8:
+        raise ValueError("Input data must have exactly eight columns.")
+    
+    # Compute the average of each row
+    data['Average'] = data.mean(axis=1)
+    
+    # Plot the distribution of the averages
+    plot = sns.distplot(data['Average'], kde=True)
+    
+    # Perform the normality test if there are at least 20 data points
+    if len(data) >= 20:
+        p_value = stats.normaltest(data['Average'])[1]
+    else:
+        p_value = None
+    
+    return data, plot, p_value

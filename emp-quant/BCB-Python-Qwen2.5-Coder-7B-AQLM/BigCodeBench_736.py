@@ -1,0 +1,13 @@
+
+import numpy as np
+from scipy import stats
+
+def task_func(L):
+    # Flatten the nested list into a 1D array
+    flattened_list = np.array(L).flatten()
+    
+    # Calculate the mode using scipy's mode function
+    mode_result = stats.mode(flattened_list)
+    
+    # Return the mode value
+    return mode_result.mode[0]
