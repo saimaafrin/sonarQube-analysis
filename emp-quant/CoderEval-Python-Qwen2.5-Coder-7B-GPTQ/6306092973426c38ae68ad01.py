@@ -1,0 +1,1 @@
+return {option.name: option.deprecates for option in self.spec_helper.iterate_option_specs() if option.deprecates}

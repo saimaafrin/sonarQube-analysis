@@ -1,0 +1,1 @@
+return next((spec for spec in self.get_parser_option_specs(command_name) if spec['name'] == argument_name), None)

@@ -1,0 +1,1 @@
+return self._OrderedDict__map.popitem()

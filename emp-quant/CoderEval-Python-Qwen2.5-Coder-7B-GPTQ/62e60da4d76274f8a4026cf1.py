@@ -1,0 +1,1 @@
+return [self.data[self.index[key]] for key in keys]

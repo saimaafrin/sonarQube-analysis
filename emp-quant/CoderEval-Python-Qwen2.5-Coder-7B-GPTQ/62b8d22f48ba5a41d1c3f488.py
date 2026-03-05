@@ -1,0 +1,1 @@
+return self.items.pop(0)

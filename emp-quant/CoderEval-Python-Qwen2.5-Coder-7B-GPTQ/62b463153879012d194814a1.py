@@ -1,0 +1,1 @@
+self._renditions[lang] = self.filepath(file_path)

@@ -1,0 +1,1 @@
+return True  # Assuming C optimizations are always required for this example

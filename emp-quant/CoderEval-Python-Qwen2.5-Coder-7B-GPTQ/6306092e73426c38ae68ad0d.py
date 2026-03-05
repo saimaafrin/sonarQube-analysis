@@ -1,0 +1,1 @@
+return COMPLEX_TYPES[type_name](option_name, (self.vars, self.defaults, self.plugin_path), subcommand, spec_option)

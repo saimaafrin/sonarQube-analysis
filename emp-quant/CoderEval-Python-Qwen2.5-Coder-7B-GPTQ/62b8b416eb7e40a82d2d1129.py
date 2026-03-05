@@ -1,0 +1,1 @@
+return [name for name in dir(self) if not name.startswith('__') and not callable(getattr(self, name))]
