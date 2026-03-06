@@ -1,0 +1,51 @@
+import pandas as pd
+from random import randint, seed as random_seed
+import statistics
+import numpy as np
+def task_func(animals=None, seed=42):
+    """
+    Create a report on the number of animals in a zoo. For each animal, generate a random count within 
+    a specified range, calculate the mean, median, and standard deviation of these counts, and return 
+    a DataFrame with these statistics. Additionally, generate a bar chart of the counts.
+
+    Parameters:
+    - animals (list of str, optional): List of animals to include in the report. 
+        Defaults to ['Lion', 'Elephant', 'Tiger', 'Giraffe', 'Panda'].
+    - seed (int, optional): Random seed for reproducibility. Defaults to 42.
+
+    Returns:
+    - DataFrame: A pandas DataFrame with columns ['Animal', 'Mean', 'Median', 'Standard Deviation'].
+      Each animal's count is randomly generated 10 times within the range 1 to 100, inclusive.
+
+    Requirements:
+    - pandas
+    - random
+    - statistics
+    - numpy
+
+    Example:
+    >>> report = task_func()
+    >>> print(report)
+         Animal  Mean  Median  Mode  Standard Deviation
+    0      Lion  42.0    30.5    95           33.250564
+    1  Elephant  44.4    41.5    12           34.197076
+    2     Tiger  61.1    71.0    30           28.762649
+    3   Giraffe  51.8    54.5    54           29.208903
+    4     Panda  35.8    32.0    44           24.595935
+
+    Note: The mode is not included in the returned DataFrame due to the possibility of no repeating values 
+    in the randomly generated counts.
+    """
+    random_seed(seed)
+    animals = animals or ['Lion', 'Elephant', 'Tiger', 'Giraffe', 'Panda']
+    df = pd.DataFrame(columns=['Animal', 'Mean', 'Median', 'Standard Deviation'])
+    for animal in animals:
+        df_animal = pd.DataFrame(columns=['Count'])
+        for i in range(10):
+            df_animal = df_animal.append({'Count': randint(1, 100)}, ignore_index=True)
+        df_animal['Animal'] = animal
+        df_animal['Mean'] = df_animal['Count'].mean()
+        df_animal['Median'] = df_animal['Count'].median()
+        df_animal['Standard Deviation'] = np.std(df_animal['Count'])
+        df = df.append(df_animal, ignore_index=True)
+    return df

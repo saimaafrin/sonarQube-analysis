@@ -1,0 +1,88 @@
+import numpy as np
+from collections import Counter
+def task_func(list_of_tuples):
+    """
+    Computes the sum of numeric values and counts the occurrences of categories in a list of tuples.
+
+    Each tuple in the input list contains a numeric value and a category. This function calculates
+    the sum of all the numeric values and also counts how many times each category appears in the list.
+
+    Parameters:
+    - list_of_tuples (list of tuple): A list where each tuple contains a numeric value and a category.
+
+    Returns:
+    - tuple: A 2-element tuple where the first element is the sum of the numeric values, and the
+             second element is a dictionary with categories as keys and their counts as values.
+
+    Requirements:
+    - numpy
+    - collections.Counter
+
+    Example:
+    >>> list_of_tuples = [(5, 'Fruits'), (9, 'Vegetables'), (-1, 'Dairy'), (-2, 'Bakery'), (4, 'Meat')]
+    >>> sum_of_values, category_counts = task_func(list_of_tuples)
+    >>> print(sum_of_values)
+    15
+    >>> print(category_counts)
+    {'Fruits': 1, 'Vegetables': 1, 'Dairy': 1, 'Bakery': 1, 'Meat': 1}
+    """
+    # TODO: Implement the function
+    # Hint: Use numpy.sum() and collections.Counter()
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    # Hint: You can use the map() function to apply a function to each element of a list
+    # Hint: You can use the sum() function to add all the elements of a list
+    # Hint: You can use the dict() function to convert a list of tuples to a dictionary
+    # Hint: You can use the zip() function to iterate over the list of tuples
+    #

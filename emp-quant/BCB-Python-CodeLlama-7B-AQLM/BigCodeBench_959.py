@@ -1,0 +1,32 @@
+import string
+import random
+def task_func(text, seed=None):
+    """
+    Transforms the input text by replacing each alphabetic character with a random letter,
+    while preserving the case and non-alphabetic characters of the original text.
+
+    Parameters:
+    - text (str): The input text to be transformed.
+    - seed (int, optional): Random seed for reproducibility. Defaults to None (not set).
+
+    Returns:
+    - str: A transformed string with random letters replacing the alphabetic characters of the input text,
+      preserving non-alphabetic characters and the original case.
+
+    Requirements:
+    - string
+    - random
+
+    Notes:
+    - Alphabet replacements are chosen from ascii characters of the same case as the original.
+
+    Example:
+    >>> text = 'Hello, world!'
+    >>> task_func(text, 0)
+    'Mynbi, qpmzj!'
+    """
+    if seed is not None:
+        random.seed(seed)
+
+    alphabet = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choice(alphabet) if c.isalpha() else c for c in text)

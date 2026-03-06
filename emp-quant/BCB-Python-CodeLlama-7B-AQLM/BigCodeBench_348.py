@@ -1,0 +1,43 @@
+import subprocess
+import os
+import signal
+import time
+def task_func(process_name: str) -> int:
+    """
+    Stops all running processes with a specific name.
+
+    Parameters:
+    process_name (str): The name of the processes to be stopped.
+
+    Returns:
+    int: The number of processes stopped. If no processes are found, returns 0.
+
+    Requirements:
+    - subprocess
+    - os
+    - signal
+    - time
+
+    Note:
+    - The function sends a termination signal to the processes and waits for 1 second. 
+      There is no guarantee that all processes will have terminated within this time.
+
+    Example:
+    >>> pids = task_func('test_name') # Dummy example, should return 0
+    >>> pids
+    0
+    """
+    pids = []
+    for pid in os.listdir('/proc'):
+        try:
+            if process_name in open(f'/proc/{pid}/cmdline').read():
+                pids.append(pid)
+        except FileNotFoundError:
+            pass
+    if pids:
+        for pid in pids:
+            os.kill(int(pid), signal.SIGTERM)
+        time.sleep(1)
+        return len(pids)
+    else:
+        return 0

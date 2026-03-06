@@ -1,0 +1,33 @@
+import numpy as np
+from scipy.stats import mode
+from scipy.stats import entropy
+def task_func(numbers):
+    """
+    Creates and returns a dictionary with the mode and entropy of a numpy array constructed from a given list.
+    The function first converts the list into a numpy array, then calculates the mode and the entropy (base 2) of this array,
+    and finally adds them to the initial dictionary with the keys 'mode' and 'entropy'.
+
+    Parameters:
+        numbers (list): A non-empty list of numbers from which a numpy array is created to calculate mode and entropy.
+
+    Returns:
+        dict: A dictionary containing the 'mode' and 'entropy' of the array with their respective calculated values.
+
+    Raises:
+        ValueError if the input list `numbers` is empty
+
+    Requirements:
+        - numpy
+        - scipy.stats.mode
+        - scipy.stats.entropy
+
+    Examples:
+        >>> result = task_func([1, 2, 2, 3, 3, 3])
+        >>> 'mode' in result and result['mode'] == 3 and 'entropy' in result
+        True
+    """
+    if not numbers:
+        raise ValueError('The input list is empty')
+    numbers = np.array(numbers)
+    result = {'mode': mode(numbers).mode[0], 'entropy': entropy(numbers, base=2)}
+    return result

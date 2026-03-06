@@ -1,0 +1,29 @@
+import re
+import requests
+def task_func(input):
+    """
+    Extract an API endpoint from the input string, send a GET request to the endpoint, and return the response data in JSON format.
+
+    Parameters:
+    input (str): The input string containing an API endpoint.
+
+    Returns:
+    dict: The response data.
+
+    Requirements:
+    - re
+    - json
+    - requests
+
+    Example:
+    >>> task_func('Fetch data from https://api.example.com/data')
+    {'key': 'value'}
+    """
+    # Extract the API endpoint from the input string.
+    api_endpoint = re.search(r'https://api.example.com/data', input).group()
+
+    # Send a GET request to the API endpoint.
+    response = requests.get(api_endpoint)
+
+    # Return the response data in JSON format.
+    return response.json()

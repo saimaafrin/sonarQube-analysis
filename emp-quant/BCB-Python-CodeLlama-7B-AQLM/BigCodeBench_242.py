@@ -1,0 +1,46 @@
+import cv2
+import matplotlib.pyplot as plt
+def task_func(image_path, kernel_size):
+    """
+    Applies a blur effect to an image using a specified kernel size, then visualizes both the original and blurred images side by side.
+
+    Parameters:
+    - image_path (str): The file path to the input image.
+    - kernel_size (int): The size of the kernel used for blurring. Must be a positive integer.
+
+    Returns:
+    - tuple: A tuple containing a numpy.ndarray of the blurred image, and two matplotlib.axes.Axes objects for the plots of the original and blurred images.
+
+    Raises:
+    - FileNotFoundError: If the specified image file does not exist.
+    - ValueError: If kernel_size is not a positive integer.
+
+    Requirements:
+    - opencv-python (cv2) for image processing.
+    - matplotlib.pyplot for plotting images.
+
+    Example:
+    >>> dummy_img_path = "image.jpg"
+    >>> np.random.seed(42)
+    >>> dummy_img = np.random.randint(0, 255, (20, 20, 3), dtype=np.uint8)
+    >>> cv2.imwrite(dummy_img_path, dummy_img)
+    True
+    >>> blurred_img, ax_original, ax_blurred = task_func('image.jpg', 5) # The function returns the blurred image array, and axes objects with titles 'Original' and 'Blurred' for the original and blurred images, respectively.
+    >>> os.remove(dummy_img_path)
+    """
+    if not isinstance(kernel_size, int) or kernel_size < 1:
+        raise ValueError("kernel_size must be a positive integer.")
+
+    img = cv2.imread(image_path)
+    if img is None:
+        raise FileNotFoundError("The specified image file does not exist.")
+
+    blurred_img = cv2.blur(img, (kernel_size, kernel_size))
+
+    fig, (ax_original, ax_blurred) = plt.subplots(1, 2, figsize=(10, 5))
+    ax_original.set_title("Original")
+    ax_blurred.set_title("Blurred")
+    ax_original.imshow(img)
+    ax_blurred.imshow(blurred_img)
+
+    return blurred_img, ax_original, ax_blurred

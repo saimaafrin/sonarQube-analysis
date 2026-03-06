@@ -1,0 +1,28 @@
+import pandas as pd
+import time
+def task_func(df, letter):
+    """
+    The function filters rows in a dict of list in which the values of the 'Word' column begin with a specified letter.
+    It first convert the dict to Datafrome, then calculates the length of the words in the filtered column and returns
+    a dictionary of word lengths and their respective counts.
+
+    Parameters:
+    df (dict of list): A dictionary where the key 'Word' maps to a list of strings.
+    letter (str): The letter to filter the 'Word' column by. 
+
+    Returns:
+    dict: A dictionary of word lengths and their counts.
+    
+    Requirements:
+    - pandas
+    - time
+
+    Example:
+    >>> df = {'Word': ['apple', 'banana', 'cherry', 'date', 'fig', 'grape', 'kiwi']}
+    >>> task_func(df, 'a')
+    {5: 1}
+    """
+    df = pd.DataFrame(df)
+    df = df[df['Word'].str.startswith(letter)]
+    df = df['Word'].str.len()
+    return df.value_counts().to_dict()

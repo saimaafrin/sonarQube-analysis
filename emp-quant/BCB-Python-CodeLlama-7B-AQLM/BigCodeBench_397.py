@@ -1,0 +1,37 @@
+import re
+import urllib.request
+import json
+def task_func(API_URL):
+    """
+    Get the public IP address of the current host from an API.
+    
+    Parameters:
+    API_URL (str): The API url that will return json format of the 'ip'.
+
+    Returns:
+    str: The public IP address.
+    
+    Raises:
+    If the API request fails, the function will return the error message.
+    
+    Requirements:
+    - re
+    - urllib.request
+    - json
+    
+    Example:
+    >>> import json
+    >>> from unittest.mock import MagicMock
+    >>> mock_response = MagicMock()
+    >>> mock_response.read.return_value = json.dumps({'ip': '192.168.1.1'}).encode('utf-8')
+    >>> mock_urlopen = MagicMock(return_value=mock_response)
+    >>> with unittest.mock.patch('urllib.request.urlopen', mock_urlopen):
+    ...     task_func('https://api.ipify.org?format=json')
+    '192.168.1.1'
+    """
+    try:
+        response = urllib.request.urlopen(API_URL)
+        response_json = json.loads(response.read())
+        return response_json['ip']
+    except Exception as e:
+        return e

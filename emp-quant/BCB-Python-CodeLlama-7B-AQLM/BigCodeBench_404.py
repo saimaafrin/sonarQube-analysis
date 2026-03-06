@@ -1,0 +1,35 @@
+import cv2
+import numpy as np
+import os
+def task_func(img_path):
+    """
+    Open an RGB image, convert it to grayscale, find contours using the cv2 library, and return the original image and contours.
+
+    Parameters:
+    - img_path (str): The path of the image file.
+
+    Returns:
+    - tuple: A tuple containing the original image as a numpy array and a list of contours.
+
+    Raises:
+    - FileNotFoundError: If the image file does not exist at the specified path.
+
+    Requirements:
+    - opencv-python
+    - numpy
+    - os
+
+    Example:
+    >>> img_path = 'sample.png'
+    >>> create_dummy_image(image_path=img_path)
+    >>> img, contours = task_func(img_path)
+    >>> os.remove(img_path)
+    """
+    if not os.path.exists(img_path):
+        raise FileNotFoundError('The image file does not exist at the specified path.')
+
+    img = cv2.imread(img_path)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    contours, _ = cv2.findContours(gray, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    return img, contours

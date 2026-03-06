@@ -1,0 +1,35 @@
+import nltk
+import re
+from collections import Counter
+STOPWORDS = nltk.corpus.stopwords.words('english')
+def task_func(text):
+    """
+    Calculate the frequency of continuous words in a text string. The function splits the text into words, 
+    converts them to lowercase, removes punctuation marks and common stopwords (provided as a constant), 
+    and then calculates the frequency of each word.
+
+    Parameters:
+    text (str): The input text string.
+
+    Returns:
+    dict: A dictionary with words as keys and their frequencies as values.
+
+    Requirements:
+    - nltk for stopwords (ensure the stopwords dataset is downloaded using nltk.download('stopwords'))
+    - re for regular expressions
+    - collections.Counter for counting occurrences
+
+    Example:
+    >>> task_func('This is a sample text. This text is for testing.')
+    {'sample': 1, 'text': 2, 'testing': 1}
+    """
+    # Split the text into words
+    words = re.split(r'\W+', text)
+    # Convert to lowercase
+    words = [word.lower() for word in words]
+    # Remove punctuation
+    words = [word for word in words if word not in STOPWORDS]
+    # Count the occurrences
+    word_counts = Counter(words)
+    # Return the dictionary
+    return word_counts

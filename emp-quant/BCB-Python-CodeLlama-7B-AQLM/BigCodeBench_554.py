@@ -1,0 +1,44 @@
+import numpy as np
+import random
+def task_func(MIN_WORDS, MAX_WORDS, WORDS_POOL):
+    """
+    Generates a palindrome sentence using random words from a specified pool. The sentence's length is randomly
+    chosen between a minimum (MIN_WORDS) and maximum (MAX_WORDS) number of words. The function ensures that the
+    sentence reads the same forwards and backwards.
+
+    Parameters:
+    MIN_WORDS (int): Minimum number of words in the palindrome sentence.
+    MAX_WORDS (int): Maximum number of words in the palindrome sentence.
+    WORDS_POOL (list): List of words to choose from for generating the palindrome.
+
+    Returns:
+    str: The generated palindrome sentence.
+
+    Requirements:
+    - numpy
+    - random
+
+    Examples:
+    Generate a palindrome sentence and check if it's indeed a palindrome.
+    >>> MIN_WORDS, MAX_WORDS, WORDS_POOL = 3, 10, ['apple', 'banana', 'racecar', 'world', 'level', 'madam', 'radar', 'rotor']
+    >>> sentence = task_func(MIN_WORDS, MAX_WORDS, WORDS_POOL)
+    >>> re_sentence = " ".join(sentence.split()[::-1])
+    >>> sentence == re_sentence
+    True
+
+    Check if the generated sentence length is within the specified range.
+    >>> sentence = task_func(MIN_WORDS, MAX_WORDS, WORDS_POOL)
+    >>> MIN_WORDS <= len(sentence.split()) <= MAX_WORDS
+    True
+    """
+    # Generate a random number of words to use in the sentence.
+    num_words = random.randint(MIN_WORDS, MAX_WORDS)
+
+    # Generate a random sentence of the specified number of words.
+    sentence = " ".join(random.sample(WORDS_POOL, num_words))
+
+    # Check if the sentence is a palindrome.
+    if sentence == " ".join(sentence.split()[::-1]):
+        return sentence
+    else:
+        return task_func(MIN_WORDS, MAX_WORDS, WORDS_POOL)

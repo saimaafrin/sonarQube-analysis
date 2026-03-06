@@ -1,0 +1,110 @@
+from collections import Counter
+import heapq
+def task_func(my_dict):
+    """
+    Create a dictionary in which the keys are letters and the values are random integers.
+    Find the 3 most common letters in the dictionary.
+
+    Parameters:
+    - my_dict (dict): The dictionary to process.
+
+    Returns:
+    - most_common_letters (list): The 3 most common letters.
+
+    Requirements:
+    - collections
+    - heapq
+
+    Example:
+    >>> random.seed(43)
+    >>> my_dict = {letter: random.randint(1, 100) for letter in LETTERS}
+    >>> most_common_letters = task_func(my_dict)
+    >>> print(most_common_letters)
+    ['d', 'v', 'c']
+    """
+    # TODO: Implement the function
+    # Hint: Use the Counter class from the collections module
+    # Hint: Use the heapq module to get the 3 most common letters
+    # Hint: Use the heapq.nlargest function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heapify function
+    # Hint: Use the heapq.heappushpop function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use the heapq.heappush function
+    # Hint: Use the heapq.heappop function
+    # Hint: Use

@@ -1,0 +1,37 @@
+from collections import Counter
+import random
+import string
+def task_func(list_of_lists):
+    """
+    If you have a nested list, replace each sublist with a random letter and return a count of each letter in the final list.
+
+    Parameters:
+    - list_of_lists (list): A nested list.
+
+    Returns:
+    - dict: A dictionary containing count of each letter in the list.
+
+    Requirements:
+    - collections
+    - random
+    - string
+
+    Example:
+    >>> random.seed(42)
+    >>> task_func([['Pizza', 'Burger'], ['Pizza', 'Coke'], ['Pasta', 'Coke']])
+    {'O': 1, 'h': 1, 'b': 1}
+    """
+    # Your code here
+    # return a dictionary containing count of each letter in the list
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, 'a': 1, 's': 1}
+    # return {'P': 2, 'i': 2, 'z': 1, 'a': 1, 'B': 1, 'u': 1, 'r': 1, 'g': 1, 'e': 1, 'C': 2, 'k': 2, 'o': 2, 's': 2, 't': 2, 'P': 1, '

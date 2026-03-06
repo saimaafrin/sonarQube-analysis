@@ -1,0 +1,48 @@
+import re
+import numpy as np
+from collections import Counter
+from sklearn.mixture import GaussianMixture
+def task_func(text, num_gaussians=1, seed=42):
+    '''
+    Extract names from a string that aren't enclosed by square brackets, 
+    tokenize the names into words, and count the frequency of each word.
+    Finally, fit a mixture of num_gaussians 1-D Gaussian distributions to 
+    the word frequencies and return the means and variances of the fitted 
+    Gaussians.
+    
+    Parameters:
+    text (str): The text from which to extract names and count word frequencies.
+    num_gaussians (int, Optional): The number of Gaussian distributions to fit to 
+                                   the word frequencies. Defaults to 1.
+    seed (int, Optional): The seed for the random number generator. Defaults to 42.
+    
+    Returns:
+    dict: A dictionary with the frequency of each word.
+    
+    Requirements:
+    - re module for regular expression operations.
+    - numpy for setting the random seed.
+    - collections.Counter for counting word frequencies.
+    - scipy.stats.gmm for fitting Gaussian mixture models.
+
+    Raises:
+    ValueError: If num_gaussians is less than or equal to 0.
+    Exception: If num_gaussians is greater than the number of unique words.
+    
+    Examples:
+    >>> freqs, means = task_func("Josie Smith [3996 COLLEGE AVENUE, SOMETOWN, MD 21003]Mugsy Dog Smith [2560 OAK ST, GLENMEADE, WI 14098]")
+    >>> freqs
+    {'Josie': 1, 'Smith': 2, 'Mugsy': 1, 'Dog': 1}
+    '''
+    if num_gaussians <= 0:
+        raise ValueError("num_gaussians must be greater than 0.")
+    if num_gaussians > len(Counter(re.findall(r'\w+', text))):
+        raise Exception("num_gaussians must be less than or equal to the number of unique words.")
+    names = re.findall(r'\w+(?=\])', text)
+    words = re.findall(r'\w+', text)
+    freqs = Counter(words)
+    gmm = GaussianMixture(n_components=num_gaussians, random_state=seed)
+    gmm.fit(np.array(list(freqs.values())))
+    means = gmm.means_
+    variances = gmm.covariances_
+    return freqs, means, variances

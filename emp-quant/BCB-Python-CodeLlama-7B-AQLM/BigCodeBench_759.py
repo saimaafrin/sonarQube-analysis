@@ -1,0 +1,39 @@
+import os
+import shutil
+import fnmatch
+def task_func(source_directory, destination_directory, file_pattern):
+    """
+    Moves all files that match a particular pattern from one directory to another.
+    
+    Functionality:
+    - Moves files from 'source_directory' to 'destination_directory' based on a filename pattern 'file_pattern'.
+    
+    Parameters:
+    - source_directory (str): The path to the source directory from which files will be moved.
+    - destination_directory (str): The path to the destination directory to which files will be moved.
+    - file_pattern (str): The file pattern to match (e.g., '*.txt' for all text files).
+    
+    Returns:
+    - Returns a list of filenames that were moved.
+    
+    Requirements:
+    - os
+    - shutil
+    - fnmatch
+    
+    Example:
+    >>> task_func('/path/to/source', '/path/to/destination', '*.txt')
+    ['task_func_data/file1.txt', 'task_func_data/file2.txt']
+    """
+    # Create a list of files that match the file pattern
+    file_list = []
+    for root, dirnames, filenames in os.walk(source_directory):
+        for filename in fnmatch.filter(filenames, file_pattern):
+            file_list.append(os.path.join(root, filename))
+    
+    # Move the files
+    for file in file_list:
+        shutil.move(file, destination_directory)
+    
+    # Return the list of files that were moved
+    return file_list

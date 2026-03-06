@@ -1,0 +1,38 @@
+import mechanize
+from bs4 import BeautifulSoup
+def task_func(url, form_id, data):
+    """
+    Submits a form on a given webpage using mechanize and extracts the title of the response page.
+
+    Parameters:
+        url (str): The URL of the webpage containing the form.
+        form_id (int): The index of the form to be submitted.
+        data (dict): A dictionary containing form data keys and values.
+
+    Returns:
+        str: The title of the page resulting from the form submission.
+
+    Notes:
+        - If the page has no title, it returns 'No Title'.
+
+    Requirements:
+        - mechanize
+        - bs4.BeautifulSoup
+
+    Examples:
+        >>> data = {'username': 'admin', 'password': 'password'}
+        >>> title = task_func('https://www.example.com/login', 0, data)
+        >>> isinstance(title, str)
+        True
+    """
+    br = mechanize.Browser()
+    br.open(url)
+    br.select_form(nr=form_id)
+    for key, value in data.items():
+        br.form[key] = value
+    response = br.submit()
+    soup = BeautifulSoup(response, 'html.parser')
+    title = soup.title.string
+    if title is None:
+        title = 'No Title'
+    return title

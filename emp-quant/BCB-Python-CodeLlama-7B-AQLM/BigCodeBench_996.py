@@ -1,0 +1,43 @@
+import requests
+import json
+from bs4 import BeautifulSoup
+def task_func(url: str, file_name: str = "Output.txt") -> str:
+    """
+    Scrape the 'title' from a specified web page, save it in JSON format to a given file, 
+    and append to the file if it exists.`
+
+    Parameters:
+    - url (str): The URL of the web page from which the title is to be scraped.
+    - file_name (str, optional): The name of the file to save the scraped title. 
+    If the file already exists, the new data is appended. Defaults to 'Output.txt'.
+
+    Returns:
+    - str: The file path where the scraped title is saved.
+
+    Requirements:
+    - requests
+    - json
+    - bs4
+
+    Notes:
+    - If the web page does not have a title, 'None' is saved as the title value in the JSON data.
+    - Data is appended to the specified file in JSON format, with each title on a new line.
+
+    Example:
+    >>> task_func("http://example.com")
+    'Output.txt'
+    >>> task_func("http://another-example.com", "AnotherOutput.txt")
+    'AnotherOutput.txt'
+    """
+    # Get the title from the web page
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    title = soup.title.text
+
+    # Save the title in JSON format to the specified file
+    data = {"title": title}
+    with open(file_name, "a") as f:
+        json.dump(data, f)
+        f.write("\n")
+
+    return file_name

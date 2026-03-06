@@ -1,0 +1,56 @@
+import matplotlib.pyplot as plt
+import random
+COLORS = ['#00bfbf', '#000000', '#0000ff']
+def task_func(number_list, bins):
+    """
+    Create a histogram subplot of a list of numbers.
+
+    Parameters:
+    - number_list (list): A list of numeric values to be plotted.
+    - bins (int or sequence): If an integer, the number of histogram bins. 
+      If a sequence, defines the bin edges.
+
+    Returns:
+    matplotlib.axes._axes.Axes: The axes object representing the histogram plot.
+
+    Note:
+    - This function generates a histogram plot using Matplotlib.
+    - The plot title is set to 'Histogram'.
+    - The x-axis label is set to 'Number'.
+    - The y-axis label is set to 'Frequency'.
+    - The color of the histogram bars is randomly selected from a predefined set of colors.
+
+
+    Requirements:
+    - matplotlib.pyplot
+    - random
+
+    Example:
+    >>> random.seed(0)
+    >>> number_list = [1, 2, 2, 3, 3, 3, 4, 4, 5]
+    >>> bins = 5
+    >>> ax = task_func(number_list, bins)
+    >>> ax.patches[0].get_height()
+    1.0
+    >>> ax.patches[2].get_height() > ax.patches[0].get_height()
+    True
+    >>> plt.close()
+    """
+    # Create a histogram plot
+    ax = plt.hist(number_list, bins=bins)
+
+    # Set the plot title
+    ax.set_title('Histogram')
+
+    # Set the x-axis label
+    ax.set_xlabel('Number')
+
+    # Set the y-axis label
+    ax.set_ylabel('Frequency')
+
+    # Set the color of the histogram bars
+    ax.patches[0].set_color(random.choice(COLORS))
+    ax.patches[1].set_color(random.choice(COLORS))
+    ax.patches[2].set_color(random.choice(COLORS))
+
+    return ax

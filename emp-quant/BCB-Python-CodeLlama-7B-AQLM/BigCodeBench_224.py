@@ -1,0 +1,47 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+def task_func(range_start=-10, range_end=10, step=0.1):
+    """
+    Create a generator object that generates a sequence of tuples. Each tuple contains x, sin(x), and cos(x) 
+    values. The function then plots the sine and cosine functions using these values along with the absolute 
+    difference between the two functions and returns the plot. Finally, it returns the magnitude of the mean 
+    and median of the 1D fft of the absolute difference between the two functions.
+
+    Parameters:
+    - range_start: The starting value of the x range.
+    - range_end: The ending value of the x range.
+    - step: The step size for the x values.
+
+    Returns:
+    tuple: A tuple containing two items:
+        - generator: A generator object producing tuples in the format (x, sin(x), cos(x), abs(sin(x) - cos(x)).
+        - ax: An Axes object representing the plot.
+        - float: The abs of the mean of the 1D fft of the absolute difference between sin(x) and cos(x).
+        - float: The abs of the median of the 1D fft of the absolute difference between sin(x) and cos(x).
+
+    Requirements:
+    - numpy
+    - matplotlib.pyplot
+    - scipy.fft
+
+    Example:
+    >>> data, ax, fft_mean, fft_median = task_func()
+    >>> print(next(data))
+    (-10.0, 0.5440211108893698, -0.8390715290764524, 1.383092639965822)
+    """
+    x = np.arange(range_start, range_end, step)
+    y_sin = np.sin(x)
+    y_cos = np.cos(x)
+    y_diff = np.abs(y_sin - y_cos)
+    fft_abs = np.abs(fft(y_diff))
+    fft_mean = np.mean(fft_abs)
+    fft_median = np.median(fft_abs)
+    fig, ax = plt.subplots()
+    ax.plot(x, y_sin, label='sin(x)')
+    ax.plot(x, y_cos, label='cos(x)')
+    ax.plot(x, y_diff, label='abs(sin(x) - cos(x))')
+    ax.legend()
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    return (x, y_sin, y_cos, y_diff), ax, fft_mean, fft_median

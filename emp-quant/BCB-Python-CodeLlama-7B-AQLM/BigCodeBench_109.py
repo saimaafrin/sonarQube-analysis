@@ -1,0 +1,61 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+def task_func(df, items=None, locations=None):
+    """
+    Generates a bar chart representing the distribution of specified items across given locations.
+    
+    The function takes a DataFrame with 'Item' and 'Location' columns and plots the count of each item
+    per location. If lists of items and locations are provided, the chart will only include those specified,
+    otherwise it defaults to a predefined list.
+
+    Parameters:
+    - df (pandas.DataFrame): DataFrame containing 'Item' and 'Location' columns.
+    - items (list of str, optional): Specific items to include in the chart. Defaults to a predefined list
+      ['apple', 'banana', 'grape', 'orange', 'pineapple'] if None.
+    - locations (list of str, optional): Specific locations to include in the chart. Defaults to a predefined
+      list ['store1', 'store2', 'store3', 'store4', 'store5'] if None.
+
+    Returns:
+    - matplotlib.axes.Axes: Axes object with the plotted bar chart.
+
+    Raises:
+    - ValueError: If 'df' is not a DataFrame, or if 'Item' or 'Location' columns are missing.
+
+    Requirements:
+    - pandas
+    - matplotlib.pyplot
+
+    Example:
+    >>> df = pd.DataFrame({
+    ...     'Item': ['apple', 'banana', 'apple', 'orange'],
+    ...     'Location': ['store1', 'store2', 'store3', 'store1']
+    ... })
+    >>> ax = task_func(df)
+    >>> ax.get_title()
+    'Item Distribution by Location'
+    """
+    if not isinstance(df, pd.DataFrame):
+        raise ValueError('df must be a DataFrame')
+    if 'Item' not in df.columns:
+        raise ValueError('df must contain a column named "Item"')
+    if 'Location' not in df.columns:
+        raise ValueError('df must contain a column named "Location"')
+
+    if items is None:
+        items = ['apple', 'banana', 'grape', 'orange', 'pineapple']
+    if locations is None:
+        locations = ['store1', 'store2', 'store3', 'store4', 'store5']
+
+    df = df[df['Item'].isin(items)]
+    df = df[df['Location'].isin(locations)]
+    df = df.groupby(['Location', 'Item']).size().unstack()
+    df = df.fillna(0)
+    df = df.reindex(locations, axis=0)
+    df = df.reindex(items, axis=1)
+
+    ax = df.plot(kind='bar', stacked=True, title='Item Distribution by Location')
+    ax.set_xlabel('Location')
+    ax.set_ylabel('Count')
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=45)
+    ax.legend(loc='upper left')
+    return ax

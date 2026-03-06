@@ -1,0 +1,44 @@
+import numpy as np
+from scipy import stats
+from sklearn.preprocessing import MinMaxScaler
+import matplotlib.pyplot as plt
+def task_func(data_dict):
+    """
+    Performs the following operations on the input dictionary 'data_dict':
+    1. Adds a key "a" with a value of 1.
+    2. Conducts statistical analysis on its values (mean, median, mode), by rounding the mean to 2 decimal places.
+    3. Normalizes the values using MinMaxScaler to a range of (0, 1).
+    4. Plots a histogram of the normalized values, with the title "Histogram of Normalized Values", and x labels "Value" and y labels "Frequency".
+    
+    Parameters:
+    data_dict (dict): The dictionary to be processed, containing numerical values.
+    
+    Returns:
+    tuple: A tuple containing:
+        - dict: The processed dictionary with key "a" added.
+        - dict: A dictionary containing statistical properties (mean, median, mode).
+        - matplotlib.axes.Axes: The histogram plot of normalized values.
+    
+    Requirements:
+    - numpy
+    - scipy
+    - sklearn.preprocessing
+    - matplotlib.pyplot
+    
+    Example:
+    >>> data, stats, plot = task_func({'key': 5, 'another_key': 10})
+    >>> data
+    {'key': 5, 'another_key': 10, 'a': 1}
+    >>> stats
+    {'mean': 5.33, 'median': 5.0, 'mode': array([1])}
+    """
+    data_dict['a'] = 1
+    stats = {
+        'mean': round(np.mean(list(data_dict.values())), 2),
+        'median': round(np.median(list(data_dict.values())), 2),
+        'mode': stats.mode(list(data_dict.values()))[0]
+    }
+    scaler = MinMaxScaler()
+    normalized_values = scaler.fit_transform(np.array(list(data_dict.values())).reshape(-1, 1))
+    plot = plt.hist(normalized_values, bins=10, title="Histogram of Normalized Values", xlabel="Value", ylabel="Frequency")
+    return data_dict, stats, plot

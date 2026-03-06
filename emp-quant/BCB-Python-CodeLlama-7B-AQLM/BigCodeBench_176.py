@@ -1,0 +1,30 @@
+import re
+import socket
+def task_func(ip_addresses: list) -> dict:
+    """
+    Given a list of IP addresses, this function returns a dictionary mapping each valid IP address to its 
+    respective hostname. If the hostname cannot be determined, the value will be None.
+    
+    Parameters:
+    ip_addresses (list): A list of IP addresses.
+    
+    Returns:
+    dict: A dictionary with IP addresses as keys and their hostnames as values. If the hostname cannot be determined,
+          the value will be None.
+    
+    Requirements:
+    - re
+    - socket
+    
+    Example:
+    >>> task_func(['8.8.8.8', '8.8.4.4'])
+    {'8.8.8.8': 'dns.google', '8.8.4.4': 'dns.google'}
+    """
+    hostname_dict = {}
+    for ip_address in ip_addresses:
+        try:
+            hostname = socket.gethostbyaddr(ip_address)[0]
+            hostname_dict[ip_address] = hostname
+        except:
+            hostname_dict[ip_address] = None
+    return hostname_dict

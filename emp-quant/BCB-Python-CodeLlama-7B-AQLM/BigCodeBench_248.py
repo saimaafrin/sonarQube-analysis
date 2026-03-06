@@ -1,0 +1,42 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import itertools
+def task_func(data_list):
+    """
+    Unzips the provided list of tuples and plots the numerical values for each position.
+    
+    Parameters:
+    - data_list (list of tuples): A list containing tuples. Each tuple should contain a character and two numerical values.
+    
+    Returns:
+    - Axes: The plot with the unzipped numerical values.
+    
+    Requirements:
+    - numpy
+    - matplotlib.pyplot
+    - itertools
+
+    Raises:
+    - ValueError: If the data_list is empty.
+    
+    Example:
+    >>> plot = task_func([('a', 1, 2), ('b', 2, 3), ('c', 3, 4), ('d', 4, 5), ('e', 5, 6)])
+    >>> type(plot)
+    <class 'matplotlib.axes._axes.Axes'>
+    """
+    if not data_list:
+        raise ValueError("The data_list is empty.")
+    else:
+        x_values = []
+        y_values = []
+        for data in data_list:
+            x_values.append(data[1])
+            y_values.append(data[2])
+        x_values = np.array(x_values)
+        y_values = np.array(y_values)
+        fig, ax = plt.subplots()
+        ax.plot(x_values, y_values)
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        ax.set_title('Plot')
+        return ax

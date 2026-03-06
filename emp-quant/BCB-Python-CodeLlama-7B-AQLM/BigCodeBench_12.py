@@ -1,0 +1,46 @@
+import subprocess
+import os
+import json
+from datetime import datetime
+def task_func(script_name='backup.sh', log_file='/home/user/backup_log.json'):
+    """
+    Runs the provided backup shell script and logs the start time, end time, and exit status 
+    in a specified JSON log file.
+    
+    Parameters:
+    - script_name (str): The name of the shell script to run. Default is 'backup.sh'.
+    - log_file (str): The path to the JSON log file where the execution details will be recorded. Default is '/home/user/backup_log.json'.
+    
+    Returns:
+    dict: A dictionary containing:
+        - 'start_time': The start time of the script execution in the format '%Y-%m-%d %H:%M:%S'.
+        - 'end_time': The end time of the script execution in the format '%Y-%m-%d %H:%M:%S'.
+        - 'exit_status': The exit status of the script execution (0 for success, other values indicate an error).
+    
+    Raises:
+    - FileNotFoundError: If the script file does not exist.
+    - RuntimeError: If there is an error executing the script.
+        
+    Requirements:
+    - subprocess
+    - os
+    - datetime
+    - json
+    
+    Example:
+    >>> task_func()
+    {'start_time': '2023-09-19 14:30:00', 'end_time': '2023-09-19 14:35:00', 'exit_status': 0}
+    """
+    if not os.path.exists(script_name):
+        raise FileNotFoundError('The script file does not exist.')
+    start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    try:
+        subprocess.run(script_name, shell=True)
+    except subprocess.CalledProcessError as e:
+        raise RuntimeError('There was an error executing the script.')
+    end_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    exit_status = e.returncode
+    log = {'start_time': start_time, 'end_time': end_time, 'exit_status': exit_status}
+    with open(log_file, 'w') as f:
+        json.dump(log, f)
+    return log

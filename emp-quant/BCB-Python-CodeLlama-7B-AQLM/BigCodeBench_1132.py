@@ -1,0 +1,35 @@
+import os
+import hashlib
+import base64
+def task_func(password, PREFIX="ME", SALT_LENGTH=16):
+    """
+    Generates a hashed password by concatenating a given password with a prefix and a generated salt,
+    and then hashing the combined string using SHA256. The hashed result is then encoded in base64.
+
+    Parameters:
+    - password (str): The password string to hash.
+    - PREFIX (str): A prefix added to the password before hashing. Defaults to "ME".
+    - SALT_LENGTH (int): The byte length of the random salt to be generated. Defaults to 16.
+
+    Returns:
+    - str: The base64 encoded SHA256 hash of the password concatenated with the prefix and salt.
+
+    Raises:
+    ValueError if the SALT_LENGTH is negative
+
+    Requirements:
+    - os
+    - hashlib
+    - base64
+
+    Example:
+    >>> hashed_password = task_func('password123', 'ME', 16)
+    >>> isinstance(hashed_password, str)
+    True
+    """
+    if SALT_LENGTH < 0:
+        raise ValueError("SALT_LENGTH must be a positive integer")
+
+    salt = os.urandom(SALT_LENGTH)
+    hashed_password = hashlib.sha256(PREFIX.encode() + password.encode() + salt).digest()
+    return base64.b64encode(hashed_password + salt).decode()
