@@ -1,0 +1,28 @@
+
+import random
+import re
+
+def task_func(text, seed=None):
+    """
+    Scramble the letters in each word of a given text, keeping the first and last letters of each word intact.
+
+    Args:
+        text (str): The text to scramble.
+        seed (int, optional): A random seed to use for reproducibility. Defaults to None.
+
+    Returns:
+        str: The scrambled text.
+    """
+    if seed is not None:
+        random.seed(seed)
+
+    words = re.findall(r'\b\w+\b', text)
+    scrambled_words = []
+
+    for word in words:
+        if len(word) <= 3:
+            scrambled_words.append(word)
+        else:
+            scrambled_words.append(''.join(random.sample(word, len(word))))
+
+    return ' '.join(scrambled_words)

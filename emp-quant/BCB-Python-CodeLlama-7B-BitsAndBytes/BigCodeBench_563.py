@@ -1,0 +1,16 @@
+
+import ctypes
+import os
+import shutil
+import glob
+
+def task_func(filepath, destination_dir):
+    # Load the DLL file
+    dll_file = ctypes.CDLL(filepath)
+    print(f"Loaded DLL file: {os.path.basename(filepath)}")
+
+    # Move all DLL files in the same directory to the destination directory
+    for file in glob.glob(os.path.join(os.path.dirname(filepath), "*.dll")):
+        shutil.move(file, destination_dir)
+
+    return os.path.basename(filepath)

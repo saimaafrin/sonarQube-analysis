@@ -1,0 +1,26 @@
+
+import pandas as pd
+import seaborn as sns
+from scipy.stats import chi2_contingency
+import matplotlib.pyplot as plt
+
+def task_func(df1, df2, column1="feature1", column2="feature2"):
+    # Merge the dataframes on the 'id' column
+    merged_df = pd.merge(df1, df2, on='id')
+    
+    # Create a contingency table from the specified columns
+    contingency_table = pd.crosstab(merged_df[column1], merged_df[column2])
+    
+    # Perform the chi-square independence test
+    chi2, p, dof, expected = chi2_contingency(contingency_table)
+    
+    # Draw a heatmap of the contingency table
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(contingency_table, annot=True, fmt='d', cmap='YlGnBu')
+    plt.title('Contingency Table Heatmap')
+    plt.xlabel(column2)
+    plt.ylabel(column1)
+    plt.show()
+    
+    # Return the p-value and the heatmap axes
+    return p, plt.gca()
